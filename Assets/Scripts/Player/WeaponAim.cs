@@ -18,6 +18,7 @@ public class WeaponAim : MonoBehaviour
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
+
     private void Update()
     {
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
@@ -37,8 +38,24 @@ public class WeaponAim : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && canFire)
         {
-            canFire = false;
+            
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
         }
+
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 direction = mousePosition - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        Vector3 localScale = Vector3.one;
+        if (angle > 90 || angle < -90)
+        {
+            localScale.y = -1f;
+        } else
+        {
+            localScale.y = +1f;
+        }
+        bulletTransform.localScale = localScale;
     }
+
 }
