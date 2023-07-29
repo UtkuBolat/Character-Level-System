@@ -9,6 +9,7 @@ public class WeaponAim : MonoBehaviour
     private Vector3 mousePos;
     public GameObject bullet;
     public Transform bulletTransform;
+    public Transform weapon;
     public bool canFire;
     private float timer;
     public float timeBetweenFiring;
@@ -19,7 +20,7 @@ public class WeaponAim : MonoBehaviour
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 rotation = mousePos - transform.position;
@@ -36,12 +37,14 @@ public class WeaponAim : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0) && canFire)
+       
+
+        if (Input.GetMouseButton(0) && canFire)
         {
-            
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
         }
 
+ 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 direction = mousePosition - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -55,7 +58,7 @@ public class WeaponAim : MonoBehaviour
         {
             localScale.y = +1f;
         }
-        bulletTransform.localScale = localScale;
+        weapon.localScale = localScale;
     }
 
 }
