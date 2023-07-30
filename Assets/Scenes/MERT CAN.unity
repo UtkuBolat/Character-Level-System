@@ -2983,10 +2983,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  lineOfSight: 0
-  shootingRange: 0
+  lineOfSight: 2.6
+  shootingRange: 1
+  fireRate: 2
   bulletPrefab: {fileID: 0}
-  bulletParentObject: {fileID: 0}
+  bulletParentObject: {fileID: 1272066454}
 --- !u!1 &1352034236
 GameObject:
   m_ObjectHideFlags: 0
