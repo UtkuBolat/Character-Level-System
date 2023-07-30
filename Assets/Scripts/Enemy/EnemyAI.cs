@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
     public float speed;
     public float lineOfSight;
     public float shootingRange;
-    public float fireRate = 1f;
+    public float fireRate = 2f;
     private float nextFireTime;
     public GameObject bulletPrefab;
     public GameObject bulletParentObject;
