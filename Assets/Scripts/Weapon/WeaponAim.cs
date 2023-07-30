@@ -12,7 +12,7 @@ public class WeaponAim : MonoBehaviour
     public Transform weapon;
     public bool canFire;
     private float timer;
-    public float timeBetweenFiring;
+    private float timeBetweenFiring;
 
     private void Start()
     {
