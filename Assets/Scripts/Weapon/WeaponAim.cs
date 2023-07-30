@@ -54,7 +54,8 @@ public class WeaponAim : MonoBehaviour
         if (angle > 90 || angle < -90)
         {
             localScale.y = -1f;
-        } else
+        }
+        else
         {
             localScale.y = +1f;
         }

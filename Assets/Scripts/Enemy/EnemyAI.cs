@@ -5,36 +5,34 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     public float speed;
-    public float lineOfSite;
+    public float lineOfSight;
     public float shootingRange;
-    public GameObject bullet;
-    public GameObject bulletParent;
-    public float fireRate = 4;
-    private float nextFireTime;
+    public GameObject bulletPrefab;
+    public GameObject bulletParentObject;
     private Transform player;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
+
     private void Update()
     {
-        float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
-        if (distanceFromPlayer < lineOfSite && distanceFromPlayer>shootingRange)
+        float distanceFromPlayer = Vector2.Distance(transform.position, player.position);
+        if (distanceFromPlayer < lineOfSight && distanceFromPlayer > shootingRange)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         }
-        else if (distanceFromPlayer <= shootingRange && nextFireTime < Time.time)
+        else if (distanceFromPlayer <= shootingRange)
         {
-            Instantiate(bullet,bulletParent.transform.position, Quaternion.identity);
-            nextFireTime = Time.time + fireRate;
+            Instantiate(bulletPrefab, bulletParentObject.transform.position, Quaternion.identity);
         }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, lineOfSite);
+        Gizmos.DrawWireSphere(transform.position, lineOfSight);
         Gizmos.DrawWireSphere(transform.position, shootingRange);
     }
 }
