@@ -7,6 +7,8 @@ public class EnemyAI : MonoBehaviour
     public float speed;
     public float lineOfSight;
     public float shootingRange;
+    public float fireRate = 1f;
+    private float nextFireTime;
     public GameObject bulletPrefab;
     public GameObject bulletParentObject;
     private Transform player;
@@ -23,9 +25,10 @@ public class EnemyAI : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         }
-        else if (distanceFromPlayer <= shootingRange)
+        else if (distanceFromPlayer <= shootingRange && nextFireTime <Time.time)
         {
             Instantiate(bulletPrefab, bulletParentObject.transform.position, Quaternion.identity);
+            nextFireTime = Time.time + fireRate;
         }
     }
 
