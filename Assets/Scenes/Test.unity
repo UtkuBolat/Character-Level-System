@@ -2825,6 +2825,7 @@ GameObject:
   - component: {fileID: 1227304172}
   - component: {fileID: 1227304171}
   - component: {fileID: 1227304176}
+  - component: {fileID: 1227304177}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2996,6 +2997,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1227304177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227304170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14e9155a603b184cac03b7a31b074b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  Healed:
+    m_PersistentCalls:
+      m_Calls: []
+  Damaged:
+    m_PersistentCalls:
+      m_Calls: []
+  Died:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1272066454
 GameObject:
   m_ObjectHideFlags: 0
@@ -3010,6 +3033,7 @@ GameObject:
   - component: {fileID: 1272066458}
   - component: {fileID: 1272066459}
   - component: {fileID: 1272066460}
+  - component: {fileID: 1272066461}
   m_Layer: 0
   m_Name: Enemy Knife
   m_TagString: Enemy
@@ -3180,6 +3204,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1272066461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272066454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14e9155a603b184cac03b7a31b074b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  Healed:
+    m_PersistentCalls:
+      m_Calls: []
+  Damaged:
+    m_PersistentCalls:
+      m_Calls: []
+  Died:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1369667355
 GameObject:
   m_ObjectHideFlags: 0
@@ -3456,6 +3502,7 @@ GameObject:
   - component: {fileID: 1680081180}
   - component: {fileID: 1680081183}
   - component: {fileID: 1680081184}
+  - component: {fileID: 1680081185}
   m_Layer: 0
   m_Name: Enemy Gun
   m_TagString: Enemy
@@ -3612,6 +3659,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1680081185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680081179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14e9155a603b184cac03b7a31b074b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  Healed:
+    m_PersistentCalls:
+      m_Calls: []
+  Damaged:
+    m_PersistentCalls:
+      m_Calls: []
+  Died:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1718683821
 GameObject:
   m_ObjectHideFlags: 0
