@@ -14,7 +14,7 @@ public class EnemyBullet : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player");
         Vector2 moveDir = (target.transform.position - transform.position).normalized * force;
         bulletRB.velocity = new Vector2(moveDir.x, moveDir.y);
-        Destroy(this.gameObject, 2f);
+        Destroy(this.gameObject, 0.15f);
         bulletRB.velocity = new Vector2(moveDir.x, moveDir.y).normalized * force;
         bulletRB.transform.right = bulletRB.velocity.normalized;
 

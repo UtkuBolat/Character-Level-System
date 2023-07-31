@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: "\u0130skeletRun"
+  m_Name: "\u0130skelet\u0130dle"
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,17 +21,15 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: e9847c3d1659e6c449a0697ca5c4c4c4, type: 3}
-    - time: 0.25
-      value: {fileID: 21300000, guid: dbb2c2039167f2f4b8786406d93b3635, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: a15b4bcd3dba4894196460592f48ad48, type: 3}
+      value: {fileID: 21300000, guid: 64425bc3954729d41b1167bd8428cf12, type: 3}
+    - time: 1
+      value: {fileID: 21300000, guid: 13b888f2f45f5b548a00c9831a2eb063, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 4
+  m_SampleRate: 1
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -48,15 +46,14 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: e9847c3d1659e6c449a0697ca5c4c4c4, type: 3}
-    - {fileID: 21300000, guid: dbb2c2039167f2f4b8786406d93b3635, type: 3}
-    - {fileID: 21300000, guid: a15b4bcd3dba4894196460592f48ad48, type: 3}
+    - {fileID: 21300000, guid: 64425bc3954729d41b1167bd8428cf12, type: 3}
+    - {fileID: 21300000, guid: 13b888f2f45f5b548a00c9831a2eb063, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.75
+    m_StopTime: 2
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
