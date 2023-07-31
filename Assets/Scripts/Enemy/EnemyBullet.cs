@@ -19,9 +19,4 @@ public class EnemyBullet : MonoBehaviour
         bulletRB.transform.right = bulletRB.velocity.normalized;
 
     }
-
-    private void Update()
-    {
-     
-    }
 }
