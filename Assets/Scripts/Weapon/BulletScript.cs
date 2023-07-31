@@ -9,6 +9,7 @@ public class BulletScript : MonoBehaviour
     private Camera mainCam;
     public Rigidbody2D rb;
     public float speed = 25;
+    
 
     private void Start()
     {
@@ -23,4 +24,5 @@ public class BulletScript : MonoBehaviour
         rb.velocity = new Vector2(direction.x, direction.y).normalized * speed;
         rb.transform.right = rb.velocity.normalized;
     }
+    
 }

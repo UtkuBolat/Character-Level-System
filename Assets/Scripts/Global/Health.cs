@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField]
     private int maxHp = 100;
-    private int hp;
+    public int hp;
 
     public int MaxHp => maxHp;
     public int Hp
@@ -27,15 +27,15 @@ public class EnemyHealth : MonoBehaviour
             hp = healthChangeData.NewValue;
             if (isDamage)
             {
-                Damaged?.Invoke(healthChangeData);
+                Damaged.Invoke(healthChangeData);
             }
             else
             {
-                Healed?.Invoke(healthChangeData);
+                Healed.Invoke(healthChangeData);
             }
             if (hp <= 0)
             {
-                Died?.Invoke();
+                Died.Invoke();
             }
         }
     }
