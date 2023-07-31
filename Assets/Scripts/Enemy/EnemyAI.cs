@@ -8,8 +8,6 @@ public class EnemyAI : MonoBehaviour
     public float lineOfSight;
     public float shootingRange;
     public float fireRate = 2f;
-    [SerializeField] private int health = 100;
-    [SerializeField] private GameObject floatingTextPrefab;
     public GameObject bulletPrefab;
     public GameObject bulletParentObject;
     private Transform player;
@@ -34,16 +32,6 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
-    {
-        ShowDamage(damage.ToString());
-        health -= damage;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
@@ -51,12 +39,5 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, shootingRange);
     }
 
-    void ShowDamage(string text)
-    {
-        if (floatingTextPrefab)
-        {
-           GameObject prefab = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
-           prefab.GetComponentInChildren<TextMesh>().text = text;
-        }
-    }
+    
 }

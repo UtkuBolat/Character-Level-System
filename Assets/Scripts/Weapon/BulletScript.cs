@@ -8,13 +8,11 @@ public class BulletScript : MonoBehaviour
     private Camera mainCam;
     private Rigidbody2D rb;
     private float force = 20;
-    public GameObject impactEffect;
 
     private void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
-        
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 direction = mousePos - transform.position;
         Vector3 rotation = transform.position - mousePos;
@@ -24,22 +22,4 @@ public class BulletScript : MonoBehaviour
         rb.transform.right = rb.velocity.normalized;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        switch(other.gameObject.tag)
-        {
-            case "Wall":
-                Impact();
-                break;
-            case "Enemy":
-                other.gameObject.GetComponent<EnemyAI>().TakeDamage(Random.Range(10, 30));
-                Impact();
-                break;
-        }
-    }
-    public void Impact()
-    {
-        Instantiate(impactEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
-    }
 }
