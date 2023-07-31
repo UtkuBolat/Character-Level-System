@@ -19,7 +19,5 @@ public class BulletScript : MonoBehaviour
          rb.velocity = new Vector2(direction.x, direction.y).normalized * speed;
          float rot = Mathf.Atan2(rotation.x, rotation.y) * Mathf.Rad2Deg;
          transform.rotation = Quaternion.Euler(0, rot, 0); 
-
-        
     }
 }
