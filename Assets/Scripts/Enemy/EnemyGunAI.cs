@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     public float shootingRange;
     public float fireRate = 2f;
     [SerializeField] private int health = 100;
-    [SerializeField] private GameObject floatingTextPrefab;
+    public GameObject floatingTextPrefab;
     public GameObject bulletPrefab;
     public GameObject bulletParentObject;
     private Transform player;
