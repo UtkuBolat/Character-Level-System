@@ -27,11 +27,11 @@ public class denemeai : MonoBehaviour
         if(distanceFromPlayer <= 4.53f)
         {
 
-            animator.SetBool("enemyÝs", true);
+            animator.SetBool("enemyis", true);
         }
         else
         {
-            animator.SetBool("enemyÝs", false);
+            animator.SetBool("enemyis", false);
         }
 
         if(distanceFromPlayer <= 0.75f)
