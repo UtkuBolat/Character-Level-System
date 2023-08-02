@@ -8,10 +8,6 @@ public class EnemyAI : MonoBehaviour
     public float lineOfSight;
     public float shootingRange;
     public float fireRate = 2f;
-
-    
-    public GameObject floatingTextPrefab;
-
     public GameObject bulletPrefab;
     public GameObject bulletParentObject;
     private Transform player;
