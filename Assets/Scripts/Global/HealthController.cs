@@ -22,7 +22,7 @@ public class Playerhealth : MonoBehaviour
         if(playerHealth<=0) 
         {
             animator.SetBool("isDead", true);
-            Destroy(gameObject);
+            Destroy(gameObject,0.75f);
         }
 
         for(int i = 0; i< hearts.Length; i++) 
