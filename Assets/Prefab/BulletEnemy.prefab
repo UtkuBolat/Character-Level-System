@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7224906679469309645}
   - component: {fileID: 2527962730325866993}
   - component: {fileID: 9150854702738985512}
-  - component: {fileID: 5792139962050724537}
   - component: {fileID: 1891988601782488796}
   - component: {fileID: 2185585846309423283}
+  - component: {fileID: -8858718260875878519}
   m_Layer: 0
   m_Name: BulletEnemy
   m_TagString: Bullet
@@ -115,20 +115,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &5792139962050724537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399603614466488368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe5c564f737d264eace869196aac8c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 2
-  playerHealth: {fileID: 0}
 --- !u!61 &1891988601782488796
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -158,7 +144,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.000000028871, y: -0.00037907623}
@@ -186,3 +172,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e1d3b647d634d4fb5cfdbad6b978a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8858718260875878519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399603614466488368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eead1e5a5458afc4abb763e9e84564b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  _playerhealth: {fileID: 0}
