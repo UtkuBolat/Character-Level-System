@@ -12,8 +12,6 @@ public class obstacles : MonoBehaviour
     {
         Health = CurrentHealth;
     }
-
-    
     void Update()
     {
         if (CurrentHealth<=0)

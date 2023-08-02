@@ -6,12 +6,6 @@ public class FollowPlayer : MonoBehaviour
 {
     public GameObject Camera;
     private Vector3 offset = new Vector3(0, 0, -4);
-    void Start()
-    {
-        
-    }
-
-    
     void Update()
     {
         transform.position = Camera.transform.position +offset;

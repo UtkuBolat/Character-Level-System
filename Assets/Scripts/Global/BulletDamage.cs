@@ -10,8 +10,8 @@ public class BulletDamage : MonoBehaviour
     {
       collision.gameObject.GetComponent<enemyHealth>().damageEnemy(bulletDamage);
         Destroy(gameObject);
-        
 
+        
 
     }
 

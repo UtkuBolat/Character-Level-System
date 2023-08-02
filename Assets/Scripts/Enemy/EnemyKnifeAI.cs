@@ -34,7 +34,7 @@ public class denemeai : MonoBehaviour
             animator.SetBool("enemyis", false);
         }
 
-        if(distanceFromPlayer <= 0.75f)
+        if(distanceFromPlayer <= 1f)
         {
             animator.SetBool("enemyFight", true);
 
