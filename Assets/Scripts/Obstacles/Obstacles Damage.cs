@@ -2,22 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletDamage : MonoBehaviour
+public class obbstaclesDamage : MonoBehaviour
 {
-    [SerializeField] private int bulletDamage;
+    public int damage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-      collision.gameObject.GetComponent<enemyHealth>().damageEnemy(bulletDamage);
+        collision.gameObject.GetComponent<obstacles>().damageEnemy(damage);
         Destroy(gameObject);
-        
-
 
     }
-
 }
 
 
-  
 
 
