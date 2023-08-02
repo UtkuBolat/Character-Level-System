@@ -44,6 +44,7 @@ public class WeaponAim : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             
+            
             GameObject tempBullet = Instantiate(bullet, bulletTransform.position, Quaternion.identity) as GameObject;
             Destroy(tempBullet,0.75f);
 
