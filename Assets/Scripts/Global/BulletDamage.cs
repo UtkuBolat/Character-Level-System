@@ -8,7 +8,17 @@ public class BulletDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<enemyHealth>().damageEnemy(bulletDamage);
-        Destroy(gameObject);
+      collision.gameObject.GetComponent<enemyHealth>().damageEnemy(bulletDamage);
+        Destroy(gameObject); 
+      collision.gameObject.GetComponent<obstacles>().damageEnemy(bulletDamage);
+      Destroy(gameObject);
+
+
+        }
+
     }
-}
+
+
+  
+
+
