@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class obstacles : MonoBehaviour
 {
-    public int Health = 1;
-    public int CurrentHealth = 1;
-    Animator animator;
+    public int Health ;
+    public int CurrentHealth ;
+    public Animator animator;
     void Start()
     {
         Health = CurrentHealth;
@@ -16,10 +16,19 @@ public class obstacles : MonoBehaviour
     
     void Update()
     {
-        if (CurrentHealth <= 0)
+        if (CurrentHealth<=0)
         {
-            animator.SetBool("bulletÝs",true);
+            animator.SetBool("bulletIs",true);
+
+            Destroy(gameObject, 0.75f);
+
+
         }
+
+        
+
+        
+        
 
     }
     public void damageEnemy(int damage)

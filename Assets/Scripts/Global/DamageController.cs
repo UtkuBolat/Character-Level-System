@@ -11,6 +11,7 @@ public class DamageController : MonoBehaviour
         
         collision.gameObject.GetComponent<Playerhealth>().Damage(damage);
         Destroy(gameObject);
+
         
 
 
