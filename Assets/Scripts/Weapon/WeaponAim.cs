@@ -10,7 +10,8 @@ public class WeaponAim : MonoBehaviour
     public GameObject bullet;
     public Transform bulletTransform;
     public Transform weapon;
-
+    public float firerate=0.07f;
+    public float nextfire;
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class WeaponAim : MonoBehaviour
 
     private void Update()
     {
-       
+
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 rotation = mousePos - transform.position;
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
@@ -43,12 +44,16 @@ public class WeaponAim : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            
-            
-            GameObject tempBullet = Instantiate(bullet, bulletTransform.position, Quaternion.identity) as GameObject;
-            Destroy(tempBullet,0.75f);
 
+            if (nextfire<=Time.time)
+            {
+                GameObject tempBullet = Instantiate(bullet, bulletTransform.position, Quaternion.identity) as GameObject;
+                Destroy(tempBullet, 0.75f);
+                nextfire = Time.time + firerate;
+
+
+            }
         }
+
     }
-  
 }

@@ -7,9 +7,11 @@ public class BulletScript : MonoBehaviour
 {
     private Vector3 mousePos;
     private Camera mainCam;
-    public Rigidbody2D rb;
-    public float speed = 25;
-    
+    private Rigidbody2D rb;
+    private float speed = 25;
+
+    [SerializeField] private int bulletDamage;
+
 
     private void Start()
     {
@@ -24,5 +26,24 @@ public class BulletScript : MonoBehaviour
         rb.velocity = new Vector2(direction.x, direction.y).normalized * speed;
         rb.transform.right = rb.velocity.normalized;
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        collision.gameObject.GetComponent<Enemy>().damageEnemy(bulletDamage);
+        Destroy(gameObject);
+
+
+
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        collision.gameObject.GetComponent<obstacles>().damageEnemy(bulletDamage);
+        Destroy(gameObject);
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+
+        collision.gameObject.GetComponent<SkeletonEnemy>().damageEnemy(bulletDamage);
+        Destroy(gameObject);
+    }
 }
