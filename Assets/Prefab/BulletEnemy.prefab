@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 9150854702738985512}
   - component: {fileID: 1891988601782488796}
   - component: {fileID: 2185585846309423283}
-  - component: {fileID: -8858718260875878519}
   m_Layer: 0
   m_Name: BulletEnemy
   m_TagString: Bullet
@@ -169,20 +168,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1399603614466488368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04e1d3b647d634d4fb5cfdbad6b978a0, type: 3}
+  m_Script: {fileID: 11500000, guid: b0db08ef29738c94ea72a7d11a2ffa3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-8858718260875878519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399603614466488368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eead1e5a5458afc4abb763e9e84564b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  _playerhealth: {fileID: 0}
+  damage: 10

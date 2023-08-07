@@ -7,13 +7,15 @@ public class BulletScript : MonoBehaviour
 {
     private Vector3 mousePos;
     private Camera mainCam;
-    public Rigidbody2D rb;
-    public float speed = 25;
-    
+    private Rigidbody2D rb;
+    private float speed = 25;
+
+    [SerializeField] private int bulletDamage;
+
 
     private void Start()
     {
-
+        Collider2D collider = GetComponent<Collider2D>();
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb=GetComponent<Rigidbody2D>();
         mousePos =mainCam.ScreenToWorldPoint(Input.mousePosition);
@@ -25,4 +27,29 @@ public class BulletScript : MonoBehaviour
         rb.transform.right = rb.velocity.normalized;
     }
     
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
+        {
+            enemyComponent.damageEnemy(bulletDamage);
+        }
+        
+        if (collision.gameObject.TryGetComponent<obstacles>(out obstacles obstaclesComponent))
+        {
+
+            obstaclesComponent.damageEnemy(bulletDamage);
+
+        }
+
+        if (collision.gameObject.TryGetComponent<SkeletonEnemy>(out SkeletonEnemy skeletonComponent))
+        {
+            skeletonComponent.damageEnemy(bulletDamage);
+        }
+        Destroy(gameObject);
+        
+
+
+
+    }
 }
