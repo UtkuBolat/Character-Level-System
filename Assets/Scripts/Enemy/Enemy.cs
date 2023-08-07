@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    //---------------------Enemy AI -----------------------
+    #region EnemyAI
     private float speed =2f;
     private float lineOfSight=4.43f;
     private float shootingRange=2.43f;
@@ -15,11 +15,14 @@ public class Enemy : MonoBehaviour
     [SerializeField]private GameObject bulletParentObject;
     [SerializeField]private Transform player;
     [SerializeField]private float nextFireTime;
-    //----------------------Enemy Health---------------------
+    #endregion
+
+    #region Enemy Health
     [Header("EnemyHealth")]
     [SerializeField] private int Health = 10;
     [SerializeField] private int CurrentHealth = 10;
- 
+    
+    #endregion
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -29,9 +32,10 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         enemyAI();
-        die();
+        
     }
 
+    #region EnemyAI
     void enemyAI()
     {
         float distanceFromPlayer = Vector2.Distance(transform.position, player.position);
@@ -45,7 +49,9 @@ public class Enemy : MonoBehaviour
             nextFireTime = Time.time + fireRate;
         }
     }
-    
+    #endregion
+
+    #region Enemy Health
     void enemyHealth ()
     {
         CurrentHealth = Health;
@@ -54,19 +60,19 @@ public class Enemy : MonoBehaviour
     public void damageEnemy(int damage)
     {
      CurrentHealth -= damage;
+
+        if (CurrentHealth <= 0)
+        {
+            die();
+        }
     }
 
     public void die()
     {
-      if (CurrentHealth <= 0)
-    {
-
-    Destroy(gameObject);
-
-
+       
+        Destroy(gameObject);
     }
-
-    }
+    #endregion
 
     private void OnDrawGizmosSelected()
     {

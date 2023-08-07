@@ -30,9 +30,9 @@ public class EnemyBullet : MonoBehaviour
             
         }
 
-
-
-        Destroy(gameObject);
-
+        if (component)
+        {
+            Destroy(gameObject);
+        }
     }
 }

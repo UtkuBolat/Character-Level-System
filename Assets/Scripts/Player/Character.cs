@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class character : MonoBehaviour
 {
-   //------Move------- 
+    #region Move
     Vector3 velocity;
     Vector3 verticalInput;
     float Speed = 3.0f;
@@ -14,7 +14,9 @@ public class character : MonoBehaviour
     [Header("Animatons")]
     [SerializeField] Animator moveAnimator;
     [SerializeField] Animator dieAnimator;
-    //------Health------- 
+    #endregion
+
+    #region Health
     private float health;
     private float lerpTimer;
     float maxHealth = 100;
@@ -23,14 +25,15 @@ public class character : MonoBehaviour
     [SerializeField] Image frontHealthBar;
     [SerializeField] Image backHealthBar;
     [SerializeField] TextMeshProUGUI HealthText;
+    #endregion
 
-    //------Level System-------
+    #region LevelUI
     private int level = 1;
     private float currentXp;
     private float requiredXp = 130;
 
     private float delayTimer;
-
+    
     [Header("LevelUI")]
     public Image frontXpBar;
     public Image backXpBar;
@@ -44,6 +47,7 @@ public class character : MonoBehaviour
     private float powerMultiplier = 2;
     [Range(7f, 14f)]
     private float divisionMultiplier = 7;
+    #endregion
 
     private void Start()
     {
@@ -65,13 +69,11 @@ public class character : MonoBehaviour
         {
             LevelUp();
         }
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            UpdateXp();
-        }
+      
 
     }
-    // --------- Character Move Scripts ---------
+    
+    #region Hareket
     void Move()
     {
         velocity = new Vector3(Input.GetAxis("Horizontal"), 0f);
@@ -90,7 +92,9 @@ public class character : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
-    // --------- Character Health Scripts ---------
+    #endregion
+    
+    #region Can
     public void UpdateHealthUI()
     {
 
@@ -137,26 +141,10 @@ public class character : MonoBehaviour
         health += healAmount;
         lerpTimer = 0f;
     }
-    // ---------------------------------------------
 
-    public void UpdateXp()
-    {
+    #endregion
 
-
-
-        GainExperienceFLatRate(20);
-
-        UpdateXpUI();
-        if (currentXp > requiredXp)
-        {
-            LevelUp();
-        }
-
-
-
-
-    }
-
+    #region Level
     public void UpdateXpUI()
     {
         float xpFraction = currentXp / requiredXp;
@@ -181,7 +169,6 @@ public class character : MonoBehaviour
     {
         currentXp += xpGained;
         lerpTimer = 0f;
-
 
 
     }
@@ -209,6 +196,7 @@ public class character : MonoBehaviour
         currentXp = Mathf.RoundToInt(currentXp - requiredXp);
         requiredXp = CalculateRequiredXp();
         levelText.text = "" + level;
+        maxHealth = health += 10;
 
     }
     private int CalculateRequiredXp()
@@ -221,5 +209,5 @@ public class character : MonoBehaviour
         return solveforRequiredXp / 4;
     }
 
-
+    #endregion
 }
