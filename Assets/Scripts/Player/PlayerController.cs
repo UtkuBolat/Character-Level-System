@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI HealthText;
     #endregion
 
-    
+
     private int level = 1;
     private float experiencePoints;
     private float requiredXp = 130;
@@ -222,5 +223,7 @@ public class PlayerController : MonoBehaviour
         }
         return solveforRequiredXp / 4;
     }
-        #endregion
- }
+    #endregion
+
+}
+

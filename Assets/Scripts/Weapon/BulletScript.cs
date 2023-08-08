@@ -46,6 +46,17 @@ public class BulletScript : MonoBehaviour
         {
             skeletonComponent.damageEnemy(bulletDamage);
         }
+
+        if (collision.gameObject.TryGetComponent<Chest>(out Chest component))
+        {
+
+
+            component.chest(true);
+
+
+
+
+        }
         Destroy(gameObject);
         
 
