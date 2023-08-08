@@ -70,8 +70,23 @@ public class PlayerController : MonoBehaviour
         {
             LevelUp();
         }
+    }
+    public void IncreaseHealth(int healAmount)
+    {
+        playerHealth += healAmount;
+        playerHealth = Mathf.Clamp(playerHealth, 0, playerMaxHealth);
+        Debug.Log("Oyuncunun canı arttırıldı! Güncel can: " + playerHealth);
+    }
 
-
+    public void UpdateMaxHealth(int newMaxHealth)
+    {
+        playerMaxHealth = newMaxHealth;
+        playerHealth = Mathf.Clamp(playerHealth, 0, playerMaxHealth);
+        Debug.Log("Oyuncunun maksimum canı güncellendi! Yeni maksimum can: " + playerMaxHealth);
+    }
+    public void ResetHealth()
+    {
+        playerHealth = playerMaxHealth;
     }
 
     #region Hareket
@@ -185,7 +200,6 @@ public class PlayerController : MonoBehaviour
         lerpTimer = 0f;
         delayTimer = 0f;
     }
-
     public void LevelUp()
     {
         level++;
