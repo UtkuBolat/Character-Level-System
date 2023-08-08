@@ -135,6 +135,7 @@ public class PlayerController : MonoBehaviour
             percentComplete = percentComplete * percentComplete;
             frontHealthBar.fillAmount = Mathf.Lerp(fillF, backHealthBar.fillAmount, percentComplete);
         }
+        HealthText.text = playerHealth + "/" + playerMaxHealth;
     }
 
     public void Die()

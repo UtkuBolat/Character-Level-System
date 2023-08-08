@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-    public int expPoints = 10;
+    
+    public int expPoints = 50;
     #region EnemyAI
     private float speed =2f;
     private float lineOfSight=4.43f;

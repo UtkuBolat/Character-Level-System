@@ -2076,7 +2076,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100/100
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -4047,6 +4047,7 @@ MonoBehaviour:
   animator: {fileID: 1272066458}
   Health: 10
   CurrentHealth: 10
+  expPoints: 60
 --- !u!50 &1272066460
 Rigidbody2D:
   serializedVersion: 4
@@ -4513,6 +4514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31331b3d778e7af4da023bf0b678e14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expPoints: 50
   floatingTextPrefab: {fileID: 605466034032342631, guid: f5ae607b57c090644a4db5be9a3e62fc, type: 3}
   bulletPrefab: {fileID: 1399603614466488368, guid: fe0586a9a9fcdd54ab214d2c4a10092d, type: 3}
   bulletParentObject: {fileID: 1059534204}
