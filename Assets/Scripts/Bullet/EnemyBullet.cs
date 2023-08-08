@@ -23,7 +23,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<character>(out character component))
+        if (collision.TryGetComponent<PlayerController>(out PlayerController component))
         {
             component.TakeDamage(damage);
 

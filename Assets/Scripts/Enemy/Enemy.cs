@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
+    public int expPoints = 10;
     #region EnemyAI
     private float speed =2f;
     private float lineOfSight=4.43f;
@@ -21,7 +23,10 @@ public class Enemy : MonoBehaviour
     [Header("EnemyHealth")]
     [SerializeField] private int Health = 10;
     [SerializeField] private int CurrentHealth = 10;
-    
+
+
+
+
     #endregion
     private void Start()
     {
@@ -63,13 +68,21 @@ public class Enemy : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
-            die();
+            Die();
         }
     }
 
-    public void die()
+  
+
+    public void Die()
     {
-       
+        
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.GainExperiencePoints(expPoints);
+        }
+
         Destroy(gameObject);
     }
     #endregion

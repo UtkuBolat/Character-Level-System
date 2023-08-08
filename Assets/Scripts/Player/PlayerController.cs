@@ -1,10 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class character : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     #region Move
     Vector3 velocity;
@@ -17,9 +17,9 @@ public class character : MonoBehaviour
     #endregion
 
     #region Health
-    private float health;
+    private float playerHealth;
     private float lerpTimer;
-    float maxHealth = 100;
+    float playerMaxHealth = 100;
     float chipSpeed = 2f;
     [Header("Character Health")]
     [SerializeField] Image frontHealthBar;
@@ -27,13 +27,14 @@ public class character : MonoBehaviour
     [SerializeField] TextMeshProUGUI HealthText;
     #endregion
 
-    #region LevelUI
+    
     private int level = 1;
-    private float currentXp;
+    private float experiencePoints;
     private float requiredXp = 130;
 
+    #region LevelUI
     private float delayTimer;
-    
+
     [Header("LevelUI")]
     public Image frontXpBar;
     public Image backXpBar;
@@ -51,9 +52,9 @@ public class character : MonoBehaviour
 
     private void Start()
     {
-        health = maxHealth;
-        frontXpBar.fillAmount = currentXp / requiredXp;
-        backXpBar.fillAmount = currentXp / requiredXp;
+        playerHealth = playerMaxHealth;
+        frontXpBar.fillAmount = experiencePoints / requiredXp;
+        backXpBar.fillAmount = experiencePoints / requiredXp;
         requiredXp = CalculateRequiredXp();
         levelText.text = "" + level;
     }
@@ -61,18 +62,33 @@ public class character : MonoBehaviour
     private void Update()
     {
         Move();
-        health = Mathf.Clamp(health, 0, maxHealth);
+        playerHealth = Mathf.Clamp(playerHealth, 0, playerMaxHealth);
         UpdateHealthUI();
         Die();
         UpdateXpUI();
-        if (currentXp > requiredXp)
+        if (experiencePoints > requiredXp)
         {
             LevelUp();
         }
-      
-
     }
-    
+    public void IncreaseHealth(int healAmount)
+    {
+        playerHealth += healAmount;
+        playerHealth = Mathf.Clamp(playerHealth, 0, playerMaxHealth);
+        Debug.Log("Oyuncunun canı arttırıldı! Güncel can: " + playerHealth);
+    }
+
+    public void UpdateMaxHealth(int newMaxHealth)
+    {
+        playerMaxHealth = newMaxHealth;
+        playerHealth = Mathf.Clamp(playerHealth, 0, playerMaxHealth);
+        Debug.Log("Oyuncunun maksimum canı güncellendi! Yeni maksimum can: " + playerMaxHealth);
+    }
+    public void ResetHealth()
+    {
+        playerHealth = playerMaxHealth;
+    }
+
     #region Hareket
     void Move()
     {
@@ -93,14 +109,14 @@ public class character : MonoBehaviour
         }
     }
     #endregion
-    
+
     #region Can
     public void UpdateHealthUI()
     {
 
         float fillF = frontHealthBar.fillAmount;
         float fillB = backHealthBar.fillAmount;
-        float hFraction = health / maxHealth;
+        float hFraction = playerHealth / playerMaxHealth;
         if (fillB > hFraction)
         {
             frontHealthBar.fillAmount = hFraction;
@@ -119,12 +135,11 @@ public class character : MonoBehaviour
             percentComplete = percentComplete * percentComplete;
             frontHealthBar.fillAmount = Mathf.Lerp(fillF, backHealthBar.fillAmount, percentComplete);
         }
-        HealthText.text = Mathf.Round(health) + "/" + Mathf.Round(maxHealth);
     }
 
     public void Die()
     {
-        if (health <= 0)
+        if (playerHealth <= 0)
         {
             dieAnimator.SetBool("isDead", true);
             Destroy(gameObject, 0.75f);
@@ -133,12 +148,12 @@ public class character : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        playerHealth -= damage;
         lerpTimer = 0f;
     }
     public void RestoreHealhth(float healAmount)
     {
-        health += healAmount;
+        playerHealth += healAmount;
         lerpTimer = 0f;
     }
 
@@ -147,7 +162,7 @@ public class character : MonoBehaviour
     #region Level
     public void UpdateXpUI()
     {
-        float xpFraction = currentXp / requiredXp;
+        float xpFraction = experiencePoints / requiredXp;
         float FXP = frontXpBar.fillAmount;
 
         if (FXP < xpFraction)
@@ -162,41 +177,38 @@ public class character : MonoBehaviour
             float percentComplete = lerpTimer / 4;
             frontXpBar.fillAmount = Mathf.Lerp(FXP, backXpBar.fillAmount, percentComplete);
         }
-        XpText.text = currentXp + "/" + requiredXp;
+        XpText.text = experiencePoints + "/" + requiredXp;
 
     }
-    public void GainExperienceFLatRate(float xpGained)
+    public void GainExperiencePoints(int points)
     {
-        currentXp += xpGained;
+        experiencePoints += points;
         lerpTimer = 0f;
-
-
     }
 
-    public void GainExperienceScalable(float xpGained, int passedLevel)
+    public void GainExperienceScalable(float points, int passedLevel)
     {
         if (passedLevel < level)
         {
             float multiplier = 1 + (level - passedLevel) * 0.1f;
-            currentXp += xpGained * multiplier;
+            experiencePoints += points * multiplier;
         }
         else
         {
-            currentXp += xpGained;
+            experiencePoints += points;
         }
         lerpTimer = 0f;
         delayTimer = 0f;
     }
-
     public void LevelUp()
     {
         level++;
         frontXpBar.fillAmount = 0f;
         backXpBar.fillAmount = 0f;
-        currentXp = Mathf.RoundToInt(currentXp - requiredXp);
+        experiencePoints = Mathf.RoundToInt(experiencePoints - requiredXp);
         requiredXp = CalculateRequiredXp();
         levelText.text = "" + level;
-        maxHealth = health += 10;
+        playerMaxHealth = playerHealth += 10;
 
     }
     private int CalculateRequiredXp()
@@ -204,10 +216,10 @@ public class character : MonoBehaviour
         int solveforRequiredXp = 0;
         for (int levelCycle = 1; levelCycle <= level; levelCycle++)
         {
-            solveforRequiredXp += (int)Mathf.Floor(levelCycle + additionMultiplier * Mathf.Pow(powerMultiplier, levelCycle / divisionMultiplier));
+            float divisionValue = Mathf.Max(1f, levelCycle / divisionMultiplier);
+            solveforRequiredXp += (int)Mathf.Floor(levelCycle + additionMultiplier * Mathf.Pow(powerMultiplier, divisionValue));
         }
         return solveforRequiredXp / 4;
     }
-
-    #endregion
-}
+        #endregion
+ }
