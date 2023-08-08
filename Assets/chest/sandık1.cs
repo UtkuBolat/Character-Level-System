@@ -33,6 +33,7 @@ public class Chest : MonoBehaviour
             GameObject glocktemp = Instantiate(glock, transform.position, Quaternion.identity) as GameObject;
 
             animator.SetBool("IsOpen",true);
+            Destroy(colider);
 
         }
         else
