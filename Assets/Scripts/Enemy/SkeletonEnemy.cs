@@ -15,6 +15,7 @@ public class SkeletonEnemy : MonoBehaviour
     [Header("EnemyHealth")]
     [SerializeField] private int Health = 10;
     [SerializeField] private int CurrentHealth = 10;
+    public int expPoints=60;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -87,6 +88,11 @@ public class SkeletonEnemy : MonoBehaviour
     {
         if (CurrentHealth <= 0)
         {
+            PlayerController playerController = FindObjectOfType<PlayerController>();
+            if (playerController != null)
+            {
+                playerController.GainExperiencePoints(expPoints);
+            }
 
             Destroy(gameObject);
 
