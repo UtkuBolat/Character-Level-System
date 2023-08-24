@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     
     public int expPoints = 50;
-    #region EnemyAI
+    
     private float speed =2f;
     private float lineOfSight=4.43f;
     private float shootingRange=2.43f;
@@ -17,17 +17,10 @@ public class Enemy : MonoBehaviour
     [SerializeField]private GameObject bulletParentObject;
     [SerializeField]private Transform player;
     [SerializeField]private float nextFireTime;
-    #endregion
 
-    #region Enemy Health
     [Header("EnemyHealth")]
     [SerializeField] private int Health = 10;
     [SerializeField] private int CurrentHealth = 10;
-
-
-
-
-    #endregion
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;

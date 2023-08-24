@@ -7,17 +7,6 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    #region Move
-    Vector3 velocity;
-    Vector3 verticalInput;
-    float Speed = 3.0f;
-    float upspped = 3.0f;
-    [Header("Animatons")]
-    [SerializeField] Animator moveAnimator;
-    [SerializeField] Animator dieAnimator;
-    #endregion
-
-    #region Health
     private float playerHealth;
     private float lerpTimer;
     float playerMaxHealth = 100;
@@ -26,8 +15,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Image frontHealthBar;
     [SerializeField] Image backHealthBar;
     [SerializeField] TextMeshProUGUI HealthText;
-    #endregion
-
 
     private int level = 1;
     private float experiencePoints;
@@ -91,6 +78,14 @@ public class PlayerController : MonoBehaviour
     }
 
     #region Hareket
+
+    Vector3 velocity;
+    Vector3 verticalInput;
+    float Speed = 3.0f;
+    float upspped = 3.0f;
+    [Header("Animatons")]
+    [SerializeField] Animator moveAnimator;
+    [SerializeField] Animator dieAnimator;
     void Move()
     {
         velocity = new Vector3(Input.GetAxis("Horizontal"), 0f);
